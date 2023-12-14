@@ -4,7 +4,7 @@ import Note from "./components/Note";
 const App = (props) => {
   const [notes, setNotes] = useState(props.notes);
   const [newNote, setNewNote] = useState("");
-  const [showAll, setShowAll] = useState(true);
+  const [showAll, setShowAll] = useState(false);
 
   const addNote = (event) => {
     event.preventDefault();
@@ -19,13 +19,10 @@ const App = (props) => {
   };
 
   const handleNoteChange = (event) => {
-    console.log(event.target.value);
     setNewNote(event.target.value);
   };
 
-  const notesToShow = showAll
-    ? notes
-    : notes.filter((note) => note.important === true);
+  const notesToShow = showAll ? notes : notes.filter((note) => note.important);
 
   return (
     <div>
